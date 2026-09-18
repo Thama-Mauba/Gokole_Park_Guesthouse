@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make an Enquiry - Gokole Park</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- STICKY NAVBAR -->
+<header class="navbar">
+  <a href="index.html" class="logo">
+    <span class="logo-bold">Gokole Park</span> 
+    <span class="logo-elegant">Guest House</span>
+  </a>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="enquiry.html" class="active">Enquiry</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <a href="enquiry.html" class="nav-book-btn">Book Now</a>
+</header>
+
+<!-- HERO HEADER -->
+<section class="about-intro-container" style="margin-top: 120px; margin-bottom: 30px;">
+  <div class="about-intro-content">
+    <span class="sub-title">Reservations & Requests</span>
+    <h2>Make an Enquiry</h2>
+    <p>Fill out the form below to request room bookings, venue hire, or farm produce deliveries.</p>
+  </div>
+</section>
+
+<!-- ENQUIRY FORM CONTAINER -->
+<section class="showcase-container" style="max-width: 700px; margin-bottom: 60px;">
+  <div style="background: #ffffff; padding: 40px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+    
+    <form action="mailto:thamamauba01@icloud.com" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Your Full Name</label>
+        <input type="text" name="Name" placeholder="e.g. John Doe" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Phone / WhatsApp</label>
+          <input type="tel" name="Phone" placeholder="063 143 8609" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
+        </div>
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Email Address</label>
+          <input type="email" name="Email" placeholder="name@example.com" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
+        </div>
+      </div>
+
+      <div>
+        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Service Required</label>
+        <select name="Service" style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none; background: #fff;">
+          <option>Room Accommodation</option>
+          <option>Farm Produce Order (Eggs, Pork, Chicken)</option>
+          <option>Conference Hall Booking</option>
+          <option>Chief Kraal / Village Tour</option>
+          <option>Horse Riding / Fishing</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+
+      <div>
+        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Message / Booking Details</label>
+        <textarea name="Message" rows="5" placeholder="Specify dates, number of guests, or produce quantities..." required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none; resize: vertical;"></textarea>
+      </div>
+
+      <button type="submit" class="hero-btn" style="border: none; cursor: pointer; background-color: #c59b27; color: white; width: 100%; padding: 14px; border-radius: 6px; font-weight: 700; font-size: 1rem;">Send Enquiry</button>
+    </form>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="text-align: center; padding: 30px; background: #ffffff; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85rem; margin-top: 60px;">
+  <p>&copy; 2026 Gokole Park & Guesthouse. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

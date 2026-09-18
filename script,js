@@ -1,0 +1,197 @@
+// Wait for the page to load completely before running the code
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("JavaScript is working!");
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const enquiryForm = document.querySelector("form");
+
+    if (enquiryForm) {
+        enquiryForm.addEventListener("submit", function (e) {
+            // Prevent the default mailto behavior just for a second to show style
+            // (You can remove e.preventDefault() if you strictly want it to open email client immediately)
+            
+            const nameInput = enquiryForm.querySelector("input[name='Name']").value;
+            
+            // Create a professional confirmation overlay dynamically
+            const modal = document.createElement("div");
+            modal.style.position = "fixed";
+            modal.style.top = "0";
+            modal.style.left = "0";
+            modal.style.width = "100%";
+            modal.style.height = "100%";
+            modal.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+            modal.style.display = "flex";
+            modal.style.justifyContent = "center";
+            modal.style.alignItems = "center";
+            modal.style.zIndex = "2000";
+
+            modal.innerHTML = `
+                <div style="background: white; padding: 40px; border-radius: 12px; text-align: center; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #111827; margin-bottom: 10px;">Thank You, ${nameInput}!</h3>
+                    <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px;">Your enquiry has been successfully captured. Our management team at Gokole Park will get back to you shortly.</p>
+                    <button id="closeModalBtn" style="background-color: #c59b27; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 700; cursor: pointer;">Got It</button>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Close modal when button is clicked
+            document.getElementById("closeModalBtn").addEventListener("click", function () {
+                modal.remove();
+                enquiryForm.reset(); // Clears the form fields
+            });
+        });
+    }
+});
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Create the lightbox HTML structure dynamically and append it to the body
+    const lightbox = document.createElement("div");
+    lightbox.classList.add("lightbox-overlay");
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            <button class="lightbox-close">&times;</button>
+            <img src="" alt="Enlarged View">
+        </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector("img");
+    const closeBtn = lightbox.querySelector(".lightbox-close");
+
+    // 2. Select all images inside your card image wrappers
+    const galleryImages = document.querySelectorAll(".card-image-wrapper img");
+
+    galleryImages.forEach(img => {
+        // Add a pointer cursor so users know they can click it
+        img.style.cursor = "pointer";
+
+        img.addEventListener("click", function () {
+            lightboxImg.src = this.src; // Set the popup image to the clicked image source
+            lightbox.classList.add("active"); // Trigger the smooth fade/zoom animation
+        });
+    });
+
+    // 3. Close the lightbox when clicking the close button or background overlay
+    function closeLightbox() {
+        lightbox.classList.remove("active");
+    }
+
+    closeBtn.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Optional: Close on pressing the 'Escape' key
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeLightbox();
+        }
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+
+    // ==========================================
+    // 1. SCROLL-TRIGGERED REVEAL ANIMATIONS
+    // ==========================================
+    // Automatically add 'reveal' class to sections and cards
+    const elementsToReveal = document.querySelectorAll(".room-card, .testimonial-card, .section-title, .about-intro-content");
+    elementsToReveal.forEach(el => el.classList.add("reveal"));
+
+    function checkScroll() {
+        const triggerBottom = window.innerHeight * 0.85;
+        elementsToReveal.forEach(el => {
+            const elTop = el.getBoundingClientRect().top;
+            if (elTop < triggerBottom) {
+                el.classList.add("active");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkScroll);
+    checkScroll(); // Run once on load
+
+
+    // ==========================================
+    // 2. LIVE INTERACTIVE CATEGORY FILTERING
+    // ==========================================
+    // If a filter bar exists on the page, make it functional dynamically
+    const cardGrids = document.querySelectorAll(".card-grid");
+    
+    cardGrids.forEach(grid => {
+        const cards = grid.querySelectorAll(".room-card");
+        if (cards.length > 3) { // Only apply if there are multiple varied cards
+            // Create filter buttons dynamically above the grid
+            const filterWrapper = document.createElement("div");
+            filterWrapper.className = "filter-container";
+            filterWrapper.innerHTML = `
+                <button class="filter-btn active" data-filter="all">All Experiences</button>
+                <button class="filter-btn" data-filter="Stay">Stay</button>
+                <button class="filter-btn" data-filter="Outdoors">Outdoors</button>
+                <button class="filter-btn" data-filter="Culture">Culture</button>
+                <button class="filter-btn" data-filter="Events">Events</button>
+            `;
+            grid.parentNode.insertBefore(filterWrapper, grid);
+
+            const filterBtns = filterWrapper.querySelectorAll(".filter-btn");
+            filterBtns.forEach(btn => {
+                btn.addEventListener("click", function () {
+                    // Update active button state
+                    filterBtns.forEach(b => b.classList.remove("active"));
+                    this.classList.add("active");
+
+                    const filterValue = this.getAttribute("data-filter");
+
+                    cards.forEach(card => {
+                        const badge = card.querySelector(".card-badge");
+                        const badgeText = badge ? badge.textContent.trim() : "";
+
+                        if (filterValue === "all" || badgeText === filterValue) {
+                            card.classList.remove("hide");
+                        } else {
+                            card.classList.add("hide");
+                        }
+                    });
+                });
+            });
+        }
+    });
+
+
+    // ==========================================
+    // 3. SLIDE-OUT BOOKING / ACTION TOAST NOTIFICATIONS
+    // ==========================================
+    // Create toast container element dynamically
+    const toast = document.createElement("div");
+    toast.className = "toast-drawer";
+    toast.innerHTML = `
+        <div>
+            <h4>Gokole Park Concierge</h4>
+            <p id="toast-msg">Item added to your session itinerary!</p>
+        </div>
+    `;
+    document.body.appendChild(toast);
+
+    // Intercept action buttons (like "Book This Room" or "Book Accommodation")
+    const actionButtons = document.querySelectorAll(".card-btn, .hero-btn");
+    actionButtons.forEach(button => {
+        // Skip external WhatsApp links so they still open normally
+        if (button.getAttribute("href") && button.getAttribute("href").includes("wa.me")) return;
+
+        button.addEventListener("click", function (e) {
+            // If it links to enquiry.html, give a smooth preview notification first
+            if (this.getAttribute("href") === "enquiry.html") {
+                const cardTitle = this.closest(".room-card") ? this.closest(".room-card").querySelector("h3").textContent : "Gokole Experience";
+                
+                document.getElementById("toast-msg").textContent = `Redirecting inquiry for: ${cardTitle}`;
+                toast.classList.add("show");
+
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                }, 3500);
+            }
+        });
+    });
+
+});
