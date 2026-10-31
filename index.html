@@ -3,273 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gokole Park and Guesthouse | Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <title>Gokole Park &amp; Guesthouse | Rooms, Tours and Conference Hall in Limpopo</title>
+    <meta name="description" content="Welcome to Gokole Park &amp; Guesthouse in Limpopo. Book comfortable rooms, a conference hall, horse riding, river fishing, braai spots and Chief's Kraal cultural tours.">
+    <meta name="keywords" content="Gokole Park, guesthouse, Limpopo, Thohoyandou, accommodation, conference hall, horse riding, river fishing, braai, Chief's Kraal tour, farm produce">
+    <meta name="author" content="Gokole Park &amp; Guesthouse">
     <link rel="stylesheet" href="style.css">
-    <!-- This sets the unique background for THIS page only -->
-     <script src="script.js" defer></script>
-   
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- NAVIGATION -->
     <header class="navbar">
-        
-  <!-- Styled Logo -->
-  <a href="index.html" class="logo">
-    <span class="logo-bold">Gokole Park</span> 
-    <span class="logo-elegant">Guest House</span>
-  </a>
+        <a href="index.html" class="logo">
+            <span class="logo-bold">Gokole Park</span>
+            <span class="logo-elegant">Guest House</span>
+        </a>
 
- <ul class="nav-links">
-  <li><a href="index.html" class="active">Home</a></li>
-  <li><a href="about.html">About Us</a></li>
-  <li><a href="services.html">Services</a></li>
-  <li><a href="enquiry.html">Enquiry</a></li>
-  <li><a href="contact.html">Contact Us</a></li>
-</ul>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false">&#9776;</button>
 
-  <!-- Far Right Action Button -->
-  <a href="enquiry.html" class="nav-book-btn">Book Now</a>
-</header>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <a href="enquiry.html" class="nav-book-btn">Book Now</a>
+        </nav>
+    </header>
 
-<!-- Hero Section -->
-<section class="hero-section">
-  <div class="hero-content">
-    <span class="hero-tag">Peaceful Getaway</span>
-    <h1>Your Tranquil Escape Awaits</h1>
-    <p>Experience luxury rooms, pristine gardens, and warm hospitality at Gokole Park.</p>
-    <a href="enquiry.html" class="hero-btn">Explore Rooms & Rates</a>
-  </div>
-</section>
+    <main id="main">
 
+        <!-- HERO WITH QUICK BOOKING BAR -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <span class="hero-tag">Itsani &middot; Thohoyandou &middot; Limpopo</span>
+                <h1>Welcome to Gokole Park</h1>
+                <p>Good rooms. Good food. Gokole Village.</p>
 
-<!-- ABOUT GOKOLE PARK INTRO -->
-<section class="about-intro-container">
-  <div class="about-intro-content">
-    <span class="sub-title">Welcome to Gokole Park & Guesthouse</span>
-    <h2>A Peaceful Destination Designed for Relaxation</h2>
-    <p>
-      Nestled in the heart of Gokole Village, Gokole Park is built for unhurried relaxation, 
-      rich local experiences, and unforgettable stays. Whether you are seeking comfortable accommodation, 
-      peaceful river fishing, outdoor braai gatherings, professional conference venues, or authentic cultural tours, 
-      we offer an experience like no other.
-    </p>
-  </div>
-</section>
+                <form class="booking-bar" id="booking-bar" aria-label="Start an enquiry">
+                    <div class="booking-field">
+                        <label for="booking-service">What do you need?</label>
+                        <select id="booking-service">
+                            <option>Room accommodation</option>
+                            <option>Conference hall booking</option>
+                            <option>Chief&rsquo;s Kraal / village tour</option>
+                            <option>Horse riding / fishing</option>
+                            <option>Farm produce order (eggs, pork, chicken)</option>
+                            <option>General enquiry</option>
+                        </select>
+                    </div>
+                    <div class="booking-field">
+                        <label for="booking-date">Date</label>
+                        <input type="date" id="booking-date">
+                    </div>
+                    <div class="booking-field">
+                        <label for="booking-guests">Guests</label>
+                        <input type="number" id="booking-guests" min="1" max="200" value="2">
+                    </div>
+                    <button type="submit" class="form-btn">Start enquiry</button>
+                </form>
+            </div>
+        </section>
 
-<!-- WHAT WE OFFER (6 FEATURE CARDS) -->
-<section class="showcase-container">
-  <div class="section-title">
-    <h2>What We Offer</h2>
-    <p>Explore our premium accommodations and signature village activities.</p>
-  </div>
+        <!-- INTRO -->
+        <section class="about-intro-container">
+            <div class="about-intro-content">
+                <span class="sub-title">About Gokole Park</span>
+                <h2>A comfortable base in the village</h2>
+                <p>
+                    Gokole Park &amp; Guesthouse is in Gokole Village, Itsani, Thohoyandou.
+                    Stay in a comfortable room, braai with family and friends, fish by the river,
+                    ride a horse along the village paths, or hire our conference hall.
+                    We also sell fresh eggs, pork and village chicken.
+                </p>
+            </div>
+        </section>
 
-  <div class="card-grid">
-    <!-- Offer 1 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/offer-accommodation.jpeg" alt="Gokole Accommodation">
-        <span class="card-badge">Stay</span>
-      </div>
-      <div class="card-body">
-        <h3> Accommodation</h3>
-        <p>Comfortable, stylish rooms designed for ultimate rest and relaxation during your visit.</p>
-        <a href="enquiry.html" class="card-btn">Book Accommodation</a>
-      </div>
-    </div>
+        <!-- WHAT WE OFFER -->
+        <section class="showcase-container" aria-labelledby="offer-heading">
+            <div class="section-title">
+                <h2 id="offer-heading">What we offer</h2>
+                <p>Somewhere to stay, and plenty to do.</p>
+            </div>
 
-    <!-- Offer 2 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/offer-fishing.jpeg" alt="River Fishing">
-        <span class="card-badge">Outdoors</span>
-      </div>
-      <div class="card-body">
-        <h3> Fishing</h3>
-        <p>Unwind and enjoy serene catch-and-release or recreational fishing along the nearby river.</p>
-        <a href="enquiry.html" class="card-btn">Inquire About Fishing</a>
-      </div>
-    </div>
+            <div class="card-grid">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/guesthouse-accommodation-gokole-park.jpeg" alt="Guest accommodation at Gokole Park and Guesthouse" loading="lazy">
+                        <span class="card-badge">Stay</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Accommodation</h3>
+                        <p>Comfortable, stylish rooms for a good night&rsquo;s rest.</p>
+                        <a href="enquiry.html" class="card-btn">Book accommodation</a>
+                    </div>
+                </article>
 
-    <!-- Offer 3 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/offer-braai.jpeg" alt="Braai Facilities">
-        <span class="card-badge">Dining</span>
-      </div>
-      <div class="card-body">
-        <h3> Braai Facilities</h3>
-        <p>Relax outdoors with dedicated, fully equipped traditional braai spaces for family and friends.</p>
-        <a href="enquiry.html" class="card-btn">Reserve Braai Spot</a>
-      </div>
-    </div>
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/river-fishing-gokole-village.jpeg" alt="River fishing near Gokole Park" loading="lazy">
+                        <span class="card-badge">Outdoors</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Fishing</h3>
+                        <p>Fish along the nearby river, for fun or catch and release.</p>
+                        <a href="enquiry.html" class="card-btn">Ask about fishing</a>
+                    </div>
+                </article>
 
-    <!-- Offer 4 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/offer-conference.jpeg" alt="Conference Hall">
-        <span class="card-badge">Events</span>
-      </div>
-      <div class="card-body">
-        <h3> Conference Hall</h3>
-        <p>A professional venue for corporate meetings, village gatherings, workshops, and private events.</p>
-        <a href="enquiry.html" class="card-btn">Book Conference Hall</a>
-      </div>
-    </div>
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/braai-area-gokole-park.jpeg" alt="Outdoor braai area at Gokole Park" loading="lazy">
+                        <span class="card-badge">Dining</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Braai facilities</h3>
+                        <p>Fully equipped braai spots for family and friends.</p>
+                        <a href="enquiry.html" class="card-btn">Reserve a braai spot</a>
+                    </div>
+                </article>
 
-    <!-- Offer 5 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/offer-horseriding.jpeg" alt="Horse Riding">
-        <span class="card-badge">Adventure</span>
-      </div>
-      <div class="card-body">
-        <h3> Horse Riding</h3>
-        <p>Explore the vibrant Gokole village paths and surrounding mountain scenery on horseback.</p>
-        <a href="enquiry.html" class="card-btn">Book Horse Riding</a>
-      </div>
-    </div>
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/conference-hall-gokole-park.jpeg" alt="Conference hall at Gokole Park set up for a meeting" loading="lazy">
+                        <span class="card-badge">Events</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Conference hall</h3>
+                        <p>A proper venue for meetings, workshops, gatherings and private events.</p>
+                        <a href="enquiry.html" class="card-btn">Book the conference hall</a>
+                    </div>
+                </article>
 
-    <!-- Offer 6 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/offer-kraal.jpeg" alt="Chief Kraal Tour">
-        <span class="card-badge">Culture</span>
-      </div>
-      <div class="card-body">
-        <h3> Chief’s Kraal Tour</h3>
-        <p>Experience local heritage firsthand with guided educational tours of the Chief’s Kraal.</p>
-        <a href="enquiry.html" class="card-btn">Book Cultural Tour</a>
-      </div>
-    </div>
-  </div>
-</section>
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/horse-riding-gokole-village.jpeg" alt="Horse riding through Gokole Village" loading="lazy">
+                        <span class="card-badge">Adventure</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Horse riding</h3>
+                        <p>Ride along the village paths with views of the mountains.</p>
+                        <a href="enquiry.html" class="card-btn">Book horse riding</a>
+                    </div>
+                </article>
 
-<!-- EXPERIENCE GOKOLE HIGHLIGHT SECTION -->
-<section class="experience-gokole-section">
-  <div class="experience-card">
-    <span class="hero-tag">Cultural Heritage</span>
-    <h2>More Than a Stay — Experience Gokole</h2>
-    <p>Immerse yourself in authentic village culture, pristine waters, scenic horseback trails, and warm South African hospitality.</p>
-    <a href="about.html" class="hero-btn">Explore the Gokole Experience</a>
-  </div>
-</section>
+                <article class="room-card is-recommended">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/chiefs-kraal-tour-gokole-village.jpeg" alt="The Chief's Kraal in Gokole Village" loading="lazy">
+                        <span class="recommended-tag">Recommended</span>
+                        <span class="card-badge">Culture</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Chief&rsquo;s Kraal tour</h3>
+                        <p>Visit the Chief&rsquo;s Kraal with a local guide and learn its history.</p>
+                        <a href="enquiry.html" class="card-btn">Book a tour</a>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-<!-- Room Showcase Grid -->
-<section class="showcase-container">
-  <div class="section-title">
-    <h2>Our Accommodation & Features</h2>
-    <p>Discover our carefully curated rooms designed for ultimate comfort.</p>
-  </div>
+        <!-- ROOMS -->
+        <section class="showcase-container" aria-labelledby="rooms-heading">
+            <div class="section-title">
+                <h2 id="rooms-heading">Rooms and rates</h2>
+                <p>Choose the room that suits you.</p>
+            </div>
 
-  <div class="card-grid">
-    <!-- Card 1 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/room-suite.jpeg" alt="Executive Lounge Suite">
-        <span class="card-badge">Suite</span>
-      </div>
-      <div class="card-body">
-        <div class="card-header">
-          <h3>Executive Lounge Suite</h3>
-          <span class="price">R950 <span>/ night</span></span>
-        </div>
-        <p>Serene garden views, private lounge access, and plush luxury seating.</p>
-        <div class="tags">
-          <span>Garden view</span>
-          <span>King Bed</span>
-          <span>Free Wi-Fi</span>
-        </div>
-        <a href="enquiry.html" class="card-btn">Book This Room</a>
-      </div>
-    </div>
+            <div class="card-grid">
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/executive-lounge-suite-gokole-park.jpeg" alt="Executive Lounge Suite with garden views" loading="lazy">
+                        <span class="card-badge">Suite</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Executive Lounge Suite</h3>
+                            <span class="price">R950 <span>/ night</span></span>
+                        </div>
+                        <p>Garden views, private lounge access and comfortable seating.</p>
+                        <div class="tags">
+                            <span>Garden view</span>
+                            <span>King bed</span>
+                            <span>Free Wi-Fi</span>
+                        </div>
+                        <a href="enquiry.html" class="card-btn">Book this room</a>
+                    </div>
+                </article>
 
-    <!-- Card 2 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/room-deluxe.jpeg" alt="Garden Terrace Room">
-        <span class="card-badge">Deluxe</span>
-      </div>
-      <div class="card-body">
-        <div class="card-header">
-          <h3>Garden Terrace Room</h3>
-          <span class="price">R1,200 <span>/ night</span></span>
-        </div>
-        <p>Direct outdoor dining access, complimentary breakfast, and scenic sunset views.</p>
-        <div class="tags">
-          <span>Terrace</span>
-          <span>Breakfast Included</span>
-          <span>Air Con</span>
-        </div>
-        <a href="enquiry.html" class="card-btn">Book This Room</a>
-      </div>
-    </div>
+                <article class="room-card is-recommended">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/garden-terrace-room-gokole-park.jpeg" alt="Garden Terrace Room with outdoor dining access" loading="lazy">
+                        <span class="recommended-tag">Recommended</span>
+                        <span class="card-badge">Deluxe</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Garden Terrace Room</h3>
+                            <span class="price">R1,200 <span>/ night</span></span>
+                        </div>
+                        <p>Outdoor dining on your terrace, free breakfast and sunset views.</p>
+                        <div class="tags">
+                            <span>Terrace</span>
+                            <span>Breakfast included</span>
+                            <span>Air con</span>
+                        </div>
+                        <a href="enquiry.html" class="card-btn">Book this room</a>
+                    </div>
+                </article>
 
-    <!-- Card 3 -->
-    <div class="room-card">
-      <div class="card-image-wrapper">
-        <img src="IMAGES/room-family.jpeg" alt="Luxury Family Suite">
-        <span class="card-badge">Family</span>
-      </div>
-      <div class="card-body">
-        <div class="card-header">
-          <h3>Luxury Family Suite</h3>
-          <span class="price">R1,800 <span>/ night</span></span>
-        </div>
-        <p>Spacious layout with multiple queen beds, en-suite soaking tub, and desk area.</p>
-        <div class="tags">
-          <span>2x Queen Beds</span>
-          <span>En-suite Tub</span>
-          <span>TV & DSTV</span>
-        </div>
-        <a href="enquiry.html" class="card-btn">Book This Room</a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- TESTIMONIALS / GUEST REVIEWS SECTION -->
-<section class="testimonials-container">
-  <div class="section-title">
-    <h2>What Our Guests Say</h2>
-    <p>Read genuine experiences from travelers who stayed with us.</p>
-  </div>
+                <article class="room-card">
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/luxury-family-suite-gokole-park.jpeg" alt="Family Suite with two queen beds" loading="lazy">
+                        <span class="card-badge">Family</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Luxury Family Suite</h3>
+                            <span class="price">R1,800 <span>/ night</span></span>
+                        </div>
+                        <p>Plenty of space with two queen beds, an en-suite bathroom and a desk.</p>
+                        <div class="tags">
+                            <span>2x Queen beds</span>
+                            <span>En-suite bath</span>
+                            <span>TV &amp; DStv</span>
+                        </div>
+                        <a href="enquiry.html" class="card-btn">Book this room</a>
+                    </div>
+                </article>
+            </div>
 
-  <div class="testimonial-grid">
-    <!-- Review 1 -->
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote">"An absolute paradise! The rooms are so luxurious, and waking up to the tranquil garden views made our anniversary unforgettable."</p>
-      <div class="author">
-        <strong>— Thabo M.</strong>
-        <span>Johannesburg, SA</span>
-      </div>
-    </div>
+            <div class="section-action">
+                <a href="services.html#rooms" class="hero-btn">See all rooms</a>
+            </div>
+        </section>
 
-    <!-- Review 2 -->
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote">"Warm hospitality, pristine cleanliness, and super fast Wi-Fi for my business trip. I will definitely be coming back to Gokole Park!"</p>
-      <div class="author">
-        <strong>— Sarah K.</strong>
-        <span>Cape Town, SA</span>
-      </div>
-    </div>
+        <!-- EXPERIENCE -->
+        <section class="feature-split" aria-labelledby="experience-heading">
+            <img src="IMAGES/chiefs-kraal-tour-gokole-village.jpeg" alt="Visitors at the Chief's Kraal in Gokole Village" loading="lazy">
+            <div>
+                <span class="sub-title">Village experiences</span>
+                <h2 id="experience-heading">Spend a day in Gokole</h2>
+                <p>Visit the Chief&rsquo;s Kraal with a local guide, ride along the village paths, or fish by the river. Tell us what you would like to do and we will help you plan your day.</p>
+                <a href="enquiry.html" class="hero-btn">Plan your visit</a>
+            </div>
+        </section>
 
-    <!-- Review 3 -->
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote">"The family suite was spacious and comfortable. Delicious breakfast options every morning. Highly recommended for families."</p>
-      <div class="author">
-        <strong>— David & Family</strong>
-        <span>Durban, SA</span>
-      </div>
-    </div>
-  </div>
-</section>
-    <!-- Page Footer -->
-    <footer>
-        <p>&copy; 2026 Gokole Park and Guesthouse. All rights reserved.</p>
+        <!-- REVIEWS -->
+        <section class="testimonials-container" aria-labelledby="reviews-heading">
+            <div class="section-title">
+                <h2 id="reviews-heading">What guests say</h2>
+                <p>Kind words from people who stayed with us.</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <figure class="testimonial-card">
+                    <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote class="quote">&ldquo;The rooms are so comfortable, and waking up to the garden views made our anniversary unforgettable.&rdquo;</blockquote>
+                    <figcaption class="author">
+                        <strong>Thabo M.</strong>
+                        <span>Johannesburg, SA</span>
+                    </figcaption>
+                </figure>
+
+                <figure class="testimonial-card">
+                    <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote class="quote">&ldquo;Warm hospitality, spotless rooms and fast Wi-Fi for my business trip. I will definitely be back.&rdquo;</blockquote>
+                    <figcaption class="author">
+                        <strong>Sarah K.</strong>
+                        <span>Cape Town, SA</span>
+                    </figcaption>
+                </figure>
+
+                <figure class="testimonial-card">
+                    <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote class="quote">&ldquo;The family suite was spacious, and breakfast was good every morning. Highly recommended for families.&rdquo;</blockquote>
+                    <figcaption class="author">
+                        <strong>David &amp; Family</strong>
+                        <span>Durban, SA</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION -->
+        <section class="showcase-container">
+            <div class="launch-card">
+                <span class="launch-tag">Stay with us</span>
+                <h2>Ready to visit Gokole Park?</h2>
+                <p>Book a room, hire the conference hall, or ask about tours and fresh farm produce.</p>
+                <a href="enquiry.html" class="launch-btn">Make an enquiry</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Gokole Park &amp; Guesthouse. All rights reserved.</p>
+        <p>Call or WhatsApp: <a href="tel:+27631438609">063 143 8609</a></p>
+        <p><a href="policies.html">Policies &amp; Privacy</a></p>
     </footer>
+
 </body>
 </html>
