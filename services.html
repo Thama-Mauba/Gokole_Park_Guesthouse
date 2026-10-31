@@ -3,184 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services & Local Produce - Gokole Park</title>
+    <title>Rooms, Food &amp; Services | Gokole Park &amp; Guesthouse</title>
+    <meta name="description" content="See rooms and rates at Gokole Park &amp; Guesthouse, order fresh farm eggs, pork and chicken, hire the conference hall, or book a Chief's Kraal tour or horse ride in Limpopo.">
+    <meta name="keywords" content="guesthouse rooms, room rates, fresh farm eggs, pork, free-range chicken, conference hall hire, Chief's Kraal tour, horse riding, Gokole Village, Limpopo">
+    <meta name="author" content="Gokole Park &amp; Guesthouse">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-    <!-- STICKY NAVBAR -->
+    <!-- NAVIGATION -->
     <header class="navbar">
         <a href="index.html" class="logo">
-            <span class="logo-bold">Gokole Park</span> 
+            <span class="logo-bold">Gokole Park</span>
             <span class="logo-elegant">Guest House</span>
         </a>
 
-        <nav>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false">&#9776;</button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="services.html" class="active" aria-current="page">Services</a></li>
                 <li><a href="enquiry.html">Enquiry</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
+            <a href="enquiry.html" class="nav-book-btn">Book Now</a>
         </nav>
-
-        <a href="enquiry.html" class="nav-book-btn">Book Now</a>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main>
-        <!-- LOCAL PRODUCE SECTION -->
-        <section class="showcase-container" style="margin-top: 100px;">
+    <main id="main">
+
+        <!-- PAGE BANNER -->
+        <section class="page-banner page-banner--services">
+            <div class="page-banner-content">
+                <span class="sub-title">Services</span>
+                <h1>Rooms, food and things to do</h1>
+                <p>Search for what you need, from a room to fresh eggs.</p>
+            </div>
+        </section>
+
+        <!-- SEARCH -->
+        <section class="showcase-container" aria-label="Search our services">
+            <div class="search-box">
+                <label for="service-search" class="sr-only">Search services</label>
+                <input type="search" id="service-search" placeholder="Search rooms, eggs, tours, conference..." autocomplete="off">
+            </div>
+            <p class="no-results" id="no-results" role="status" aria-live="polite">Nothing matches your search. Try another word.</p>
+        </section>
+
+        <!-- ROOMS -->
+        <section class="showcase-container" id="rooms" aria-labelledby="rooms-heading">
             <div class="section-title">
-                <h2>Fresh Local Products & Deliveries</h2>
-                <p>Sourced directly from Gokole Village. Order fresh farm produce delivered straight to you.</p>
+                <h2 id="rooms-heading">Rooms</h2>
+                <p>Comfortable places to stay, with prices per night.</p>
             </div>
 
             <div class="card-grid">
-                <!-- Produce 1 -->
-                <div class="room-card">
+                <article class="room-card" data-service>
                     <div class="card-image-wrapper">
-                        <img src="IMAGES/produce-eggs.jpeg" alt="Fresh Eggs">
+                        <img src="IMAGES/executive-lounge-suite-gokole-park.jpeg" alt="Executive Lounge Suite with garden views" loading="lazy">
+                        <span class="card-badge">Suite</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Executive Lounge Suite</h3>
+                            <span class="price">R950 <span>/ night</span></span>
+                        </div>
+                        <p>Garden views, private lounge access and comfortable seating.</p>
+                        <div class="tags">
+                            <span>Garden view</span>
+                            <span>King bed</span>
+                            <span>Free Wi-Fi</span>
+                        </div>
+                        <a href="enquiry.html" class="card-btn">Book this room</a>
+                    </div>
+                </article>
+
+                <article class="room-card is-recommended" data-service>
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/garden-terrace-room-gokole-park.jpeg" alt="Garden Terrace Room with outdoor dining access" loading="lazy">
+                        <span class="recommended-tag">Recommended</span>
+                        <span class="card-badge">Deluxe</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Garden Terrace Room</h3>
+                            <span class="price">R1,200 <span>/ night</span></span>
+                        </div>
+                        <p>Outdoor dining on your terrace, free breakfast and sunset views.</p>
+                        <div class="tags">
+                            <span>Terrace</span>
+                            <span>Breakfast included</span>
+                            <span>Air con</span>
+                        </div>
+                        <a href="enquiry.html" class="card-btn">Book this room</a>
+                    </div>
+                </article>
+
+                <article class="room-card" data-service>
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/luxury-family-suite-gokole-park.jpeg" alt="Family Suite with two queen beds" loading="lazy">
+                        <span class="card-badge">Family</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>Luxury Family Suite</h3>
+                            <span class="price">R1,800 <span>/ night</span></span>
+                        </div>
+                        <p>Plenty of space with two queen beds, an en-suite bathroom and a desk.</p>
+                        <div class="tags">
+                            <span>2x Queen beds</span>
+                            <span>En-suite bath</span>
+                            <span>TV &amp; DStv</span>
+                        </div>
+                        <a href="enquiry.html" class="card-btn">Book this room</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- LOCAL PRODUCE -->
+        <section class="showcase-container" aria-labelledby="produce-heading">
+            <div class="section-title">
+                <h2 id="produce-heading">Fresh farm produce</h2>
+                <p>From Gokole Village to your table. Order by WhatsApp.</p>
+            </div>
+
+            <div class="card-grid">
+                <article class="room-card" data-service>
+                    <div class="card-image-wrapper">
+                        <img src="IMAGES/fresh-farm-eggs-gokole.jpeg" alt="Fresh farm eggs from Gokole Village" loading="lazy">
                         <span class="card-badge">Farm Fresh</span>
                     </div>
                     <div class="card-body">
-                        <h3>Fresh Farm Eggs</h3>
-                        <p>Daily gathered, organic village eggs packed for local delivery or guest orders.</p>
-                        <a href="https://wa.me/27631438609?text=Hi%20Gokole%20Park,%20I%20would%20like%20to%20order%20Fresh%20Eggs." class="card-btn" style="background-color: #25D366;" target="_blank">Place WhatsApp Order</a>
+                        <h3>Fresh farm eggs</h3>
+                        <p>Eggs gathered daily, ready for collection or local delivery.</p>
+                        <a href="https://wa.me/27631438609?text=Hi%20Gokole%20Park,%20I%20would%20like%20to%20order%20fresh%20eggs." class="card-btn whatsapp" target="_blank" rel="noopener">Order on WhatsApp</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Produce 2 -->
-                <div class="room-card">
+                <article class="room-card" data-service>
                     <div class="card-image-wrapper">
-                        <img src="IMAGES/produce-pork.jpeg" alt="Fresh Pork">
+                        <img src="IMAGES/fresh-local-pork-gokole.jpeg" alt="Fresh local pork" loading="lazy">
                         <span class="card-badge">Local Meats</span>
                     </div>
                     <div class="card-body">
-                        <h3>Fresh Pork</h3>
-                        <p>Quality cut local pork, ideal for braais, family meals, and event catering.</p>
-                        <a href="https://wa.me/27631438609?text=Hi%20Gokole%20Park,%20I%20would%20like%20to%20order%20Fresh%20Pork." class="card-btn" style="background-color: #25D366;" target="_blank">Place WhatsApp Order</a>
+                        <h3>Fresh pork</h3>
+                        <p>Local pork for braais, family meals and event catering.</p>
+                        <a href="https://wa.me/27631438609?text=Hi%20Gokole%20Park,%20I%20would%20like%20to%20order%20fresh%20pork." class="card-btn whatsapp" target="_blank" rel="noopener">Order on WhatsApp</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Produce 3 -->
-                <div class="room-card">
+                <article class="room-card" data-service>
                     <div class="card-image-wrapper">
-                        <img src="IMAGES/produce-chicken.jpeg" alt="Fresh Chicken">
+                        <img src="IMAGES/free-range-village-chicken.jpeg" alt="Fresh free-range village chicken" loading="lazy">
                         <span class="card-badge">Free Range</span>
                     </div>
                     <div class="card-body">
-                        <h3>Fresh Village Chicken</h3>
-                        <p>Tender free-range chicken prepared fresh upon order for local pickup or delivery.</p>
-                        <a href="https://wa.me/27631438609?text=Hi%20Gokole%20Park,%20I%20would%20like%20to%20order%20Fresh%20Chicken." class="card-btn" style="background-color: #25D366;" target="_blank">Place WhatsApp Order</a>
+                        <h3>Village chicken</h3>
+                        <p>Free-range chicken, prepared fresh when you order.</p>
+                        <a href="https://wa.me/27631438609?text=Hi%20Gokole%20Park,%20I%20would%20like%20to%20order%20fresh%20chicken." class="card-btn whatsapp" target="_blank" rel="noopener">Order on WhatsApp</a>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- CONFERENCES & CULTURAL EXPERIENCES -->
-        <section class="showcase-container">
+        <!-- CONFERENCES AND TOURS -->
+        <section class="showcase-container" aria-labelledby="events-heading">
             <div class="section-title">
-                <h2>Conferences & Guided Tours</h2>
-                <p>Professional event spaces and immersive village activities.</p>
+                <h2 id="events-heading">Conference hall and tours</h2>
+                <p>A venue for your event, and ways to enjoy the village.</p>
             </div>
 
             <div class="card-grid">
-                <!-- Event 1 -->
-                <div class="room-card">
+                <article class="room-card" data-service>
                     <div class="card-image-wrapper">
-                        <img src="IMAGES/offer-conference.jpeg" alt="Conference Hall">
+                        <img src="IMAGES/conference-hall-gokole-park.jpeg" alt="Conference hall at Gokole Park set up for a meeting" loading="lazy">
                         <span class="card-badge">Events</span>
                     </div>
                     <div class="card-body">
-                        <h3>Conference Hall Hire</h3>
-                        <p>Fully equipped venue for corporate meetings, workshops, and community gatherings.</p>
-                        <a href="enquiry.html" class="card-btn">Inquire for Venue Rates</a>
+                        <h3>Conference hall hire</h3>
+                        <p>A fully equipped venue for meetings, workshops and community gatherings.</p>
+                        <a href="enquiry.html" class="card-btn">Ask about rates</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Event 2 -->
-                <div class="room-card">
+                <article class="room-card is-recommended" data-service>
                     <div class="card-image-wrapper">
-                        <img src="IMAGES/offer-kraal.jpeg" alt="Chief Kraal Tour">
+                        <img src="IMAGES/chiefs-kraal-tour-gokole-village.jpeg" alt="The Chief's Kraal in Gokole Village" loading="lazy">
+                        <span class="recommended-tag">Recommended</span>
                         <span class="card-badge">Heritage</span>
                     </div>
                     <div class="card-body">
-                        <h3>Chief’s Kraal Cultural Tour</h3>
-                        <p>Guided educational tours detailing local history, traditional leadership, and heritage.</p>
-                        <a href="enquiry.html" class="card-btn">Book Cultural Tour</a>
+                        <h3>Chief&rsquo;s Kraal tour</h3>
+                        <p>A guided visit covering local history and traditional leadership.</p>
+                        <a href="enquiry.html" class="card-btn">Book a tour</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Event 3 -->
-                <div class="room-card">
+                <article class="room-card" data-service>
                     <div class="card-image-wrapper">
-                        <img src="IMAGES/offer-horseriding.jpeg" alt="Horseback Excursions">
+                        <img src="IMAGES/horse-riding-gokole-village.jpeg" alt="Guided horseback ride along the river in Gokole Village" loading="lazy">
                         <span class="card-badge">Outdoors</span>
                     </div>
                     <div class="card-body">
-                        <h3>Guided Horseback Excursions</h3>
-                        <p>Scenic rides led by local guides along the river banks and through Gokole Village.</p>
-                        <a href="enquiry.html" class="card-btn">Book Ride Session</a>
+                        <h3>Guided horse rides</h3>
+                        <p>Rides led by local guides along the river and through the village.</p>
+                        <a href="enquiry.html" class="card-btn">Book a ride</a>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- SERVICE DETAILS & HOURS -->
-        <section class="showcase-container">
-            <div class="launch-card" style="border-color: #e5e7eb; text-align: left; background: #ffffff;">
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #111827; margin-bottom: 15px;">📦 Local Order & Delivery Information</h3>
-                <ul style="line-height: 1.8; color: #4b5563; font-size: 0.95rem; list-style-type: square; padding-left: 20px;">
-                    <li><strong>Order Processing:</strong> Farm produce orders (eggs, pork, chicken) are processed daily from 08:00 to 17:00 via WhatsApp.</li>
-                    <li><strong>Local Pickups & Delivery:</strong> Direct pickup at Gokole Park or arranged village delivery upon request.</li>
-                    <li><strong>Guided Tours & Activities:</strong> Chief’s Kraal tours and horseback riding require booking 24 hours in advance.</li>
-                    <li><strong>Conference Catering:</strong> Custom food and beverage menus available for all conference hall bookings.</li>
+        <!-- ORDER INFORMATION -->
+        <section class="showcase-container" aria-labelledby="info-heading">
+            <div class="panel">
+                <h2 id="info-heading">Orders and delivery</h2>
+                <ul class="info-list">
+                    <li><strong>Produce orders:</strong> eggs, pork and chicken orders are handled daily from 08:00 to 17:00 on WhatsApp.</li>
+                    <li><strong>Pickup and delivery:</strong> collect from Gokole Park or ask about village delivery.</li>
+                    <li><strong>Tours and activities:</strong> Chief&rsquo;s Kraal tours and horse riding must be booked 24 hours ahead.</li>
+                    <li><strong>Conference catering:</strong> custom food and drink menus are available with every hall booking.</li>
                 </ul>
             </div>
         </section>
 
-        <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
-        <section class="showcase-container">
+        <!-- FAQ -->
+        <section class="showcase-container" aria-labelledby="faq-heading">
             <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know about our services and experiences.</p>
+                <h2 id="faq-heading">Common questions</h2>
+                <p>Quick answers about our services.</p>
             </div>
 
             <div class="card-grid">
-                <div class="room-card" style="padding: 25px;">
-                    <h4 style="color: #111827; font-size: 1.1rem; margin-bottom: 10px;">How do I confirm a conference or tour booking?</h4>
-                    <p style="color: #4b5563; font-size: 0.9rem; line-height: 1.5;">You can submit an inquiry through our Enquiry page or contact our team directly via WhatsApp/phone to secure your date.</p>
+                <div class="room-card text-card">
+                    <h3>How do I confirm a booking?</h3>
+                    <p>Send an enquiry on our Enquiry page, or call or WhatsApp 063 143 8609 to secure your date.</p>
                 </div>
 
-                <div class="room-card" style="padding: 25px;">
-                    <h4 style="color: #111827; font-size: 1.1rem; margin-bottom: 10px;">Are fishing gear and bait provided?</h4>
-                    <p style="color: #4b5563; font-size: 0.9rem; line-height: 1.5;">Guests are welcome to bring their own gear, or rent basic fishing setups directly on-site at Gokole Park.</p>
+                <div class="room-card text-card">
+                    <h3>Are fishing gear and bait provided?</h3>
+                    <p>Bring your own gear, or rent a basic fishing set at Gokole Park.</p>
                 </div>
 
-                <div class="room-card" style="padding: 25px;">
-                    <h4 style="color: #111827; font-size: 1.1rem; margin-bottom: 10px;">Can we customize catering for events?</h4>
-                    <p style="color: #4b5563; font-size: 0.9rem; line-height: 1.5;">Yes! We offer full traditional braai catering, fresh local meats, and custom menus tailored for conference packages.</p>
+                <div class="room-card text-card">
+                    <h3>Can you cater for events?</h3>
+                    <p>Yes. We offer braai catering, fresh local meat and custom menus for conference bookings.</p>
                 </div>
             </div>
         </section>
 
-        <!-- NEED SOMETHING CUSTOM BANNER -->
+        <!-- CALL TO ACTION -->
         <section class="showcase-container">
             <div class="launch-card">
-                <span class="launch-tag">Custom Requests</span>
-                <h2>Planning a Special Event or Large Order?</h2>
-                <p>Contact Mr. Mauba directly to organize tailored catering, large group tours, or full venue hire.</p>
-                <a href="contact.html" class="launch-btn">Get in Touch With Us</a>
+                <span class="launch-tag">Special requests</span>
+                <h2>Planning an event or a large order?</h2>
+                <p>Talk to Mr. Mauba directly about catering, group tours or hiring the whole venue.</p>
+                <a href="contact.html" class="launch-btn">Get in touch</a>
             </div>
         </section>
+
     </main>
 
     <!-- FOOTER -->
-    <footer style="text-align: center; padding: 30px; background: #ffffff; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85rem; margin-top: 60px;">
-        <p>&copy; 2026 Gokole Park & Guesthouse. All rights reserved.</p>
+    <footer class="site-footer">
+        <p>&copy; 2026 Gokole Park &amp; Guesthouse. All rights reserved.</p>
+        <p>Call or WhatsApp: <a href="tel:+27631438609">063 143 8609</a></p>
+        <p><a href="policies.html">Policies &amp; Privacy</a></p>
     </footer>
 
 </body>
