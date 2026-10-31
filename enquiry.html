@@ -3,89 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make an Enquiry - Gokole Park</title>
+    <title>Make an Enquiry | Gokole Park &amp; Guesthouse</title>
+    <meta name="description" content="Send an enquiry to Gokole Park &amp; Guesthouse to book a room, hire the conference hall, arrange a village tour, or order fresh farm produce in Limpopo.">
+    <meta name="keywords" content="guesthouse booking, room reservation, conference hall booking, tour booking, farm produce order, enquiry form, Gokole Park, Limpopo">
+    <meta name="author" content="Gokole Park &amp; Guesthouse">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- STICKY NAVBAR -->
-<header class="navbar">
-  <a href="index.html" class="logo">
-    <span class="logo-bold">Gokole Park</span> 
-    <span class="logo-elegant">Guest House</span>
-  </a>
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-bold">Gokole Park</span>
+            <span class="logo-elegant">Guest House</span>
+        </a>
 
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="enquiry.html" class="active">Enquiry</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false">&#9776;</button>
 
-  <a href="enquiry.html" class="nav-book-btn">Book Now</a>
-</header>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="enquiry.html" class="active" aria-current="page">Enquiry</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <a href="enquiry.html" class="nav-book-btn">Book Now</a>
+        </nav>
+    </header>
 
-<!-- HERO HEADER -->
-<section class="about-intro-container" style="margin-top: 120px; margin-bottom: 30px;">
-  <div class="about-intro-content">
-    <span class="sub-title">Reservations & Requests</span>
-    <h2>Make an Enquiry</h2>
-    <p>Fill out the form below to request room bookings, venue hire, or farm produce deliveries.</p>
-  </div>
-</section>
+    <main id="main">
 
-<!-- ENQUIRY FORM CONTAINER -->
-<section class="showcase-container" style="max-width: 700px; margin-bottom: 60px;">
-  <div style="background: #ffffff; padding: 40px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-    
-    <form action="mailto:thamamauba01@icloud.com" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 20px;">
-      <div>
-        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Your Full Name</label>
-        <input type="text" name="Name" placeholder="e.g. John Doe" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
-      </div>
-      
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-        <div>
-          <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Phone / WhatsApp</label>
-          <input type="tel" name="Phone" placeholder="063 143 8609" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
-        </div>
-        <div>
-          <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Email Address</label>
-          <input type="email" name="Email" placeholder="name@example.com" required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
-        </div>
-      </div>
+        <!-- PAGE BANNER -->
+        <section class="page-banner page-banner--enquiry">
+            <div class="page-banner-content">
+                <span class="sub-title">Enquiries</span>
+                <h1>Make an enquiry</h1>
+                <p>Tell us what you need and we will reply. Fields marked * are required.</p>
+            </div>
+        </section>
 
-      <div>
-        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Service Required</label>
-        <select name="Service" style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none; background: #fff;">
-          <option>Room Accommodation</option>
-          <option>Farm Produce Order (Eggs, Pork, Chicken)</option>
-          <option>Conference Hall Booking</option>
-          <option>Chief Kraal / Village Tour</option>
-          <option>Horse Riding / Fishing</option>
-          <option>General Inquiry</option>
-        </select>
-      </div>
+        <!-- ENQUIRY FORM -->
+        <section class="showcase-container form-container" aria-label="Enquiry form">
+            <div class="panel">
+                <form class="form" id="enquiry-form" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+                    <input type="hidden" name="form-name" value="enquiry">
 
-      <div>
-        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 6px;">Message / Booking Details</label>
-        <textarea name="Message" rows="5" placeholder="Specify dates, number of guests, or produce quantities..." required style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; outline: none; resize: vertical;"></textarea>
-      </div>
+                    <div class="form-group">
+                        <label for="enquiry-name">Full name *</label>
+                        <input type="text" id="enquiry-name" name="name" placeholder="e.g. John Doe" autocomplete="name" required minlength="2" aria-describedby="enquiry-name-error">
+                        <p class="error-message" id="enquiry-name-error"></p>
+                    </div>
 
-      <button type="submit" class="hero-btn" style="border: none; cursor: pointer; background-color: #c59b27; color: white; width: 100%; padding: 14px; border-radius: 6px; font-weight: 700; font-size: 1rem;">Send Enquiry</button>
-    </form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="enquiry-phone">Phone / WhatsApp *</label>
+                            <input type="tel" id="enquiry-phone" name="phone" placeholder="e.g. 063 143 8609" autocomplete="tel" required pattern="[0-9 +()\-]{10,15}" aria-describedby="enquiry-phone-error">
+                            <p class="error-message" id="enquiry-phone-error"></p>
+                        </div>
 
-  </div>
-</section>
+                        <div class="form-group">
+                            <label for="enquiry-email">Email address *</label>
+                            <input type="email" id="enquiry-email" name="email" placeholder="name@example.com" autocomplete="email" required aria-describedby="enquiry-email-error">
+                            <p class="error-message" id="enquiry-email-error"></p>
+                        </div>
+                    </div>
 
-<!-- FOOTER -->
-<footer style="text-align: center; padding: 30px; background: #ffffff; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85rem; margin-top: 60px;">
-  <p>&copy; 2026 Gokole Park & Guesthouse. All rights reserved.</p>
-</footer>
+                    <div class="form-group">
+                        <label for="enquiry-service">Service required *</label>
+                        <select id="enquiry-service" name="service" required aria-describedby="enquiry-service-error">
+                            <option value="">Choose a service</option>
+                            <option>Room accommodation</option>
+                            <option>Farm produce order (eggs, pork, chicken)</option>
+                            <option>Conference hall booking</option>
+                            <option>Chief&rsquo;s Kraal / village tour</option>
+                            <option>Horse riding / fishing</option>
+                            <option>General enquiry</option>
+                        </select>
+                        <p class="error-message" id="enquiry-service-error"></p>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="enquiry-date">Preferred date (optional)</label>
+                            <input type="date" id="enquiry-date" name="preferred_date" aria-describedby="enquiry-date-error">
+                            <p class="error-message" id="enquiry-date-error"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="enquiry-guests">Number of guests (optional)</label>
+                            <input type="number" id="enquiry-guests" name="guests" min="1" max="200" placeholder="e.g. 2" aria-describedby="enquiry-guests-error">
+                            <p class="error-message" id="enquiry-guests-error"></p>
+                        </div>
+                    </div>
+
+                    <fieldset class="form-fieldset form-group" aria-describedby="enquiry-method-error">
+                        <legend>How should we reply? *</legend>
+                        <div class="form-options">
+                            <label><input type="radio" name="contact_method" value="WhatsApp" required> WhatsApp</label>
+                            <label><input type="radio" name="contact_method" value="Phone call"> Phone call</label>
+                            <label><input type="radio" name="contact_method" value="Email"> Email</label>
+                        </div>
+                        <p class="error-message" id="enquiry-method-error"></p>
+                    </fieldset>
+
+                    <div class="form-group">
+                        <label for="enquiry-message">Message / booking details *</label>
+                        <textarea id="enquiry-message" name="message" rows="5" placeholder="Tell us your dates, number of guests, or produce quantities..." required minlength="10" aria-describedby="enquiry-message-error"></textarea>
+                        <p class="error-message" id="enquiry-message-error"></p>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <label><input type="checkbox" id="enquiry-consent" name="consent" value="yes" required aria-describedby="enquiry-consent-error"> I agree that Gokole Park may contact me about this enquiry. *</label>
+                        <p class="error-message" id="enquiry-consent-error"></p>
+                    </div>
+
+                    <p class="form-note">Read how we use your details in our <a href="policies.html#privacy">privacy notice</a>.</p>
+
+                    <!-- Spam trap: real visitors never see or fill this -->
+                    <p hidden><label>Leave this empty: <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+                    <p class="form-status" id="enquiry-status" role="status" aria-live="polite"></p>
+
+                    <button type="submit" class="form-btn">Send Enquiry</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Gokole Park &amp; Guesthouse. All rights reserved.</p>
+        <p>Call or WhatsApp: <a href="tel:+27631438609">063 143 8609</a></p>
+        <p><a href="policies.html">Policies &amp; Privacy</a></p>
+    </footer>
 
 </body>
 </html>
