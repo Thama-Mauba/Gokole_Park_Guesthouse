@@ -1,52 +1,165 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+/* =====================================================
+   GOKOLE PARK & GUESTHOUSE - SHARED STYLESHEET
+   One file, used by every page.
+   Sections:
+   1. Design tokens (colours, fonts, sizes)
+   2. Reset and base styles
+   3. Navigation
+   4. Buttons
+   5. Hero and page intro
+   6. Cards, grids and sections
+   7. Panels, forms and map
+   8. Interactive features (lightbox, filter, toast)
+   9. Footer
+   10. Media queries (tablet and mobile)
+   ===================================================== */
 
-/* GLOBAL RESET */
-* {
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root {
+    /* Colours */
+    --gold: #c59b27;
+    --gold-dark: #a8821f;
+    --gold-text: #8a6a0f;      /* darker gold for text on light backgrounds (readable) */
+    --green: #1f3d2b;          /* forest green for strips and footer */
+    --ink: #16281e;
+    --text: #3a463e;
+    --muted: #55625a;
+    --line: #e7e1d3;
+    --bg: #faf7f0;
+    --white: #ffffff;
+    --whatsapp: #0f7a43;
+    --error: #b91c1c;
+    --success: #15803d;
+
+    /* Fonts */
+    --font-body: 'DM Sans', Arial, sans-serif;
+    --font-display: 'Fraunces', Georgia, serif;
+
+    /* Type scale (overridden in the media queries at the bottom) */
+    --fs-h1: 3.5rem;
+    --fs-h2: 2rem;
+    --fs-h2-large: 2.4rem;
+    --fs-h3: 1.1rem;
+    --fs-body: 1rem;
+    --fs-small: 0.88rem;
+
+    /* Layout */
+    --nav-height: 72px;
+    --radius: 12px;
+    --radius-small: 6px;
+    --page-width: 1200px;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- 2. RESET AND BASE ---------- */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f8f9fa;
-    color: #1a1a1a;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
 }
 
-/* NAVBAR */
-/* --- FIXED STICKY NAVBAR --- */
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    background-color: var(--bg);
+    color: var(--ink);
+    padding-top: var(--nav-height); /* space for the fixed navbar */
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.25;
+    color: var(--ink);
+}
+
+a {
+    color: var(--gold-text);
+}
+
+a:hover {
+    color: var(--gold-dark);
+}
+
+/* Visible keyboard focus on everything clickable */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 10px;
+    top: -60px;
+    background: var(--ink);
+    color: var(--white);
+    padding: 10px 16px;
+    border-radius: var(--radius-small);
+    z-index: 5000;
+}
+
+.skip-link:focus {
+    top: 10px;
+    color: var(--white);
+}
+
+/* ---------- 3. NAVIGATION ---------- */
 .navbar {
-    position: fixed; /* Locks the navbar in place */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Keeps navbar floating on top of all images and text */
+    height: var(--nav-height);
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 40px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Adds a crisp, subtle shadow while scrolling */
+    padding: 0 40px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
-    text-decoration: none;
-    font-size: 1.3rem;
     display: flex;
     gap: 6px;
+    font-size: 1.3rem;
+    text-decoration: none;
 }
 
 .logo-bold {
     font-weight: 700;
-    color: #111827;
+    color: var(--ink);
 }
 
 .logo-elegant {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+    font-family: var(--font-display);
     font-weight: 600;
-    color: #c59b27;
+    color: var(--gold-text);
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
 }
 
 .nav-links {
@@ -56,82 +169,190 @@ body {
 }
 
 .nav-links a {
-    color: #374151;
+    display: inline-block;
+    padding: 6px 0;
+    color: var(--text);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.nav-links a:hover {
-    color: #c59b27;
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--gold-text);
+    border-bottom-color: var(--gold);
+}
+
+.nav-links a:active {
+    color: var(--gold-dark);
+}
+
+.nav-links a.active {
+    color: var(--gold-text);
+    font-weight: 700;
+    border-bottom-color: var(--gold);
+}
+
+/* Hamburger button: hidden on desktop, shown on tablet and mobile */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-small);
+    padding: 8px 12px;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.nav-toggle:hover {
+    background-color: var(--bg);
+}
+
+.nav-toggle:active {
+    background-color: var(--line);
+}
+
+/* ---------- 4. BUTTONS ---------- */
+.nav-book-btn,
+.hero-btn,
+.card-btn,
+.launch-btn,
+.form-btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+}
+
+/* Gold buttons */
+.nav-book-btn,
+.hero-btn,
+.form-btn {
+    background-color: var(--gold);
+    color: var(--ink);
+}
+
+.nav-book-btn:hover,
+.hero-btn:hover,
+.form-btn:hover {
+    background-color: var(--gold-dark);
+    color: var(--white);
+}
+
+.nav-book-btn:active,
+.hero-btn:active,
+.form-btn:active,
+.card-btn:active,
+.launch-btn:active {
+    transform: translateY(1px);
 }
 
 .nav-book-btn {
-    background-color: #c59b27;
-    color: #ffffff;
-    text-decoration: none;
     padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 700;
     font-size: 0.85rem;
 }
 
-/* HERO SECTION */
-.hero-section {
-    background-image: url('IMAGES/home-hero.jpeg');
-    background-size: cover;
-    background-position: center;
-    height:100vh; /* Changed from 80vh to 100vh so it covers the full browser screen */
-    padding: 0 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.hero-section {
-    background-image: url('IMAGES/home-hero.jpeg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-    margin-top: 70px; /* Offsets the height of your fixed navbar */
+.hero-btn {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* --- HERO BANNER (TEXT DIRECTLY ON PHOTO) --- */
+/* Dark card buttons */
+.card-btn {
+    display: block;
+    padding: 12px;
+    background-color: var(--ink);
+    color: var(--white);
+    font-size: 0.85rem;
+}
+
+.card-btn:hover {
+    background-color: var(--gold);
+    color: var(--ink);
+}
+
+/* WhatsApp variant (replaces the old inline styles) */
+.card-btn.whatsapp {
+    background-color: var(--whatsapp);
+    color: var(--white);
+}
+
+.card-btn.whatsapp:hover {
+    background-color: #0b5f34;
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.launch-btn {
+    padding: 14px 32px;
+    background-color: var(--gold);
+    color: var(--ink);
+}
+
+.launch-btn:hover {
+    background-color: var(--white);
+    color: var(--ink);
+}
+
+.form-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+}
+
+.form-btn:disabled {
+    background-color: var(--line);
+    color: var(--muted);
+    cursor: not-allowed;
+}
+
+/* ---------- 5. HERO AND PAGE INTRO ---------- */
 .hero-section {
-    background-image: url('IMAGES/home-hero.jpeg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
+    min-height: calc(100vh - var(--nav-height));
+    min-height: calc(100svh - var(--nav-height)); /* phones: ignores the browser's address bar */
+    padding: 60px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
+    background-image: linear-gradient(rgba(16, 32, 22, 0.55), rgba(16, 32, 22, 0.55)), url('IMAGES/gokole-park-guesthouse-garden.jpeg');
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-content {
     max-width: 800px;
 }
 
-.hero-tag {
-    color: #c59b27;
+.hero-tag,
+.sub-title {
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+}
+
+.hero-tag {
+    color: var(--gold);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .hero-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    color: #ffffff; /* Crisp white text directly over image */
+    font-family: var(--font-display);
+    font-size: var(--fs-h1);
+    color: var(--white);
     margin: 15px 0;
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5); /* Drops a subtle glow so text is easily readable */
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content p {
@@ -141,26 +362,34 @@ body {
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-.hero-btn {
-    background-color: #c59b27;
-    color: #ffffff;
-    padding: 14px 32px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.sub-title {
+    color: var(--gold-text);
 }
 
-.hero-btn:hover {
-    background-color: #a8821f;
+.about-intro-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
 }
 
-/* SHOWCASE CONTAINER */
-.showcase-container {
-    max-width: 1200px;
+.about-intro-content h1,
+.about-intro-content h2 {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2-large);
+    margin: 10px 0 20px;
+}
+
+.about-intro-content p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* ---------- 6. CARDS, GRIDS AND SECTIONS ---------- */
+.showcase-container,
+.testimonials-container {
+    max-width: var(--page-width);
     margin: 50px auto;
     padding: 0 20px;
 }
@@ -171,30 +400,34 @@ body {
 }
 
 .section-title h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: #111827;
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
 }
 
 .section-title p {
-    color: #6b7280;
+    color: var(--muted);
     font-size: 0.95rem;
     margin-top: 6px;
 }
 
-/* ROOM CARDS GRID */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 30px;
 }
 
 .room-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
 }
 
 .card-image-wrapper {
@@ -213,8 +446,8 @@ body {
     position: absolute;
     top: 12px;
     left: 12px;
-    background-color: #ffffff;
-    color: #111827;
+    background-color: var(--white);
+    color: var(--ink);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
@@ -223,102 +456,110 @@ body {
 
 .card-body {
     padding: 20px;
-    background-color: #ffffff;
+}
+
+.card-body h3,
+.card-header h3 {
+    font-size: var(--fs-h3);
+    margin-bottom: 8px;
+}
+
+.card-body p {
+    color: var(--muted);
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    margin-bottom: 14px;
 }
 
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 10px;
-}
-
-.card-header h3 {
-    font-size: 1.1rem;
-    color: #111827;
+    gap: 10px;
+    margin-bottom: 4px;
 }
 
 .price {
     font-weight: 700;
-    color: #c59b27;
-    font-size: 1.1rem;
+    color: var(--gold-text);
+    font-size: var(--fs-h3);
+    white-space: nowrap;
 }
 
 .price span {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: var(--muted);
     font-weight: 400;
-}
-
-.card-body p {
-    color: #4b5563;
-    font-size: 0.88rem;
-    line-height: 1.4;
-    margin-bottom: 12px;
 }
 
 .tags {
     display: flex;
-    gap: 6px;
     flex-wrap: wrap;
+    gap: 6px;
     margin-bottom: 18px;
 }
 
 .tags span {
     background-color: #f3f4f6;
-    color: #4b5563;
+    color: var(--muted);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.75rem;
 }
 
-.card-btn {
-    display: block;
-    text-align: center;
-    background-color: #111827;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.85rem;
+/* Cards that hold only text (contact and FAQ) */
+.room-card.text-card {
+    padding: 28px;
 }
 
-.card-btn:hover {
-    background-color: #c59b27;
+.text-card h3,
+.text-card h4 {
+    margin-bottom: 8px;
 }
-/* --- TESTIMONIALS SECTION --- */
+
+.text-card p {
+    color: var(--muted);
+    font-size: var(--fs-small);
+    line-height: 1.6;
+}
+
+.text-card .role {
+    color: var(--gold-text);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+}
+
+/* Testimonials */
 .testimonials-container {
-    max-width: 1200px;
     margin: 80px auto;
-    padding: 0 20px;
 }
 
 .testimonial-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 30px;
 }
 
 .testimonial-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 30px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 30px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .stars {
-    color: #c59b27; /* Gold stars */
+    color: var(--gold);
     font-size: 1.2rem;
     margin-bottom: 15px;
 }
 
 .quote {
-    color: #374151;
+    color: var(--text);
     font-style: italic;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -327,107 +568,403 @@ body {
 
 .author strong {
     display: block;
-    color: #111827;
     font-size: 0.9rem;
 }
 
 .author span {
-    color: #6b7280;
+    color: var(--muted);
     font-size: 0.8rem;
 }
 
-
-/* --- ABOUT INTRO SECTION --- */
-.about-intro-container {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 0 20px;
-    text-align: center;
-}
-
-.sub-title {
-    color: #c59b27;
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
-
-.about-intro-content h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.4rem;
-    color: #111827;
-    margin: 10px 0 20px 0;
-}
-
-.about-intro-content p {
-    color: #4b5563;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-/* --- EXPERIENCE GOKOLE SECTION --- */
+/* Photo band with a card on top */
 .experience-gokole-section {
-    background-image: url('IMAGES/home-hero.jpeg');
-    background-size: cover;
-    background-position: center;
-    padding: 100px 20px;
     margin: 80px 0;
+    padding: 100px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('IMAGES/gokole-park-guesthouse-garden.jpeg');
+    background-size: cover;
+    background-position: center;
 }
 
 .experience-card {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    border-radius: 12px;
     max-width: 700px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.experience-card .hero-tag {
+    color: var(--gold-text);
+    text-shadow: none;
 }
 
 .experience-card h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-display);
     font-size: 2.5rem;
-    color: #111827;
     margin: 15px 0;
 }
 
 .experience-card p {
-    color: #4b5563;
+    color: var(--muted);
     font-size: 1.05rem;
-    line-height: 1.6;
     margin-bottom: 25px;
 }
-/* --- CONTACT PAGE STYLES --- */
-.room-card a[style*="background-color: #25D366"] {
-    transition: opacity 0.3s ease, transform 0.2s ease;
+
+/* Call-to-action banner (was missing from the old stylesheet) */
+.launch-card {
+    padding: 60px 30px;
+    text-align: center;
+    background-color: var(--ink);
+    color: var(--white);
+    border-radius: var(--radius);
 }
 
-.room-card a[style*="background-color: #25D366"]:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-/* ACTIVE NAV LINK STYLING */
-.nav-links a.active {
-    color: #c59b27 !important; /* Gold text */
+.launch-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--gold);
+    font-size: 0.85rem;
     font-weight: 700;
-    border-bottom: 2px solid #c59b27; /* Elegant underline accent */
-    padding-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
-/* --- LIGHTBOX ANIMATED MODAL --- */
-.lightbox-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+
+.launch-card h2 {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    color: var(--white);
+    margin-bottom: 12px;
+}
+
+.launch-card p {
+    max-width: 600px;
+    margin: 0 auto 28px;
+    color: #d1d5db;
+}
+
+/* ---------- 7. PANELS, FORMS AND MAP ---------- */
+.panel {
+    padding: 35px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.panel h2,
+.panel h3 {
+    font-family: var(--font-display);
+    margin-bottom: 14px;
+}
+
+.panel p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 14px;
+}
+
+.panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 30px;
+    align-items: start;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-list {
+    list-style: none;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 2;
+}
+
+.info-list li {
+    border-bottom: 1px solid var(--line);
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+/* Forms */
+.form-container {
+    max-width: 700px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    background-color: var(--white);
+    border: 1px solid #9ca3af;
+    border-radius: var(--radius-small);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group ::placeholder {
+    color: #6b7280;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: var(--ink);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--gold-dark);
+    box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.3);
+    outline: none;
+}
+
+.form-group .is-invalid {
+    border-color: var(--error);
+}
+
+.form-group .is-valid {
+    border-color: var(--success);
+}
+
+.error-message {
+    min-height: 1.2em;
+    margin-top: 4px;
+    color: var(--error);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.form-status {
+    display: none;
+    padding: 14px 16px;
+    border-radius: var(--radius-small);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form-status.success {
+    display: block;
+    color: #14532d;
+    background-color: #dcfce7;
+    border: 1px solid var(--success);
+}
+
+.form-status.error {
+    display: block;
+    color: #7f1d1d;
+    background-color: #fee2e2;
+    border: 1px solid var(--error);
+}
+
+/* Radio and checkbox groups */
+.form-fieldset {
+    border: none;
+}
+
+.form-fieldset legend {
+    margin-bottom: 8px;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.form-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+}
+
+.form-options label,
+.form-check label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.form-options input,
+.form-check input {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    accent-color: var(--gold-dark);
+}
+
+.form-check {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Text for screen readers only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Search box (services page) */
+.search-box {
+    max-width: 480px;
+    margin: 0 auto 25px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 18px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 1px solid #9ca3af;
+    border-radius: 30px;
+    background-color: var(--white);
+}
+
+.search-box input:focus {
+    border-color: var(--gold-dark);
+    box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.3);
+    outline: none;
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    color: var(--muted);
+    padding: 20px;
+}
+
+.no-results.show {
+    display: block;
+}
+
+/* Map */
+.map-frame {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius-small);
+    overflow: hidden;
+}
+
+.map-frame iframe {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
+    border: 0;
+}
+
+.map-actions {
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* ---------- 8. INTERACTIVE FEATURES ---------- */
+/* Scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Category filter buttons */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--muted);
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    color: var(--white);
+    background-color: var(--ink);
+    border-color: var(--ink);
+}
+
+.filter-btn:active {
+    transform: scale(0.96);
+}
+
+.room-card.hide {
+    display: none;
+}
+
+/* Lightbox */
+.card-image-wrapper img {
+    cursor: zoom-in;
+}
+
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 3000;
+    background-color: rgba(0, 0, 0, 0.85);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -440,10 +977,10 @@ body {
 
 .lightbox-content {
     position: relative;
-    max-width: 85%;
+    max-width: 90%;
     max-height: 85vh;
     transform: scale(0.8);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Gives a nice spring/smooth zoom effect */
+    transition: transform 0.3s ease;
 }
 
 .lightbox-overlay.active .lightbox-content {
@@ -452,91 +989,45 @@ body {
 
 .lightbox-content img {
     width: 100%;
-    height: auto;
     max-height: 80vh;
-    border-radius: 8px;
     object-fit: contain;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .lightbox-close {
     position: absolute;
-    top: -40px;
+    top: -44px;
     right: 0;
-    color: #ffffff;
+    background: none;
+    border: none;
+    color: var(--white);
     font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
-    background: none;
-    border: none;
-}
-/* --- 1. SCROLL REVEAL BASE STYLES --- */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+.lightbox-close:hover {
+    color: var(--gold);
 }
 
-/* --- 2. CATEGORY FILTER BUTTONS --- */
-.filter-container {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    color: #4b5563;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover, .filter-btn.active {
-    background-color: #111827;
-    color: #ffffff;
-    border-color: #111827;
-}
-
-/* Smooth hide/show for filtering cards */
-.room-card {
-    transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.room-card.hide {
-    opacity: 0;
-    transform: scale(0.9);
-    pointer-events: none;
-    display: none;
-}
-
-/* --- 3. SLIDE-OUT NOTIFICATION TOAST DRAWER --- */
+/* Slide-out notification */
 .toast-drawer {
     position: fixed;
     bottom: 30px;
-    right: -400px;
-    background-color: #111827;
-    color: #ffffff;
-    padding: 20px 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    right: -420px;
     z-index: 9999;
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    border-left: 4px solid #c59b27;
+    max-width: calc(100% - 30px);
+    padding: 20px 25px;
+    color: var(--white);
+    background-color: var(--ink);
+    border-left: 4px solid var(--gold);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: right 0.5s ease;
 }
 
 .toast-drawer.show {
@@ -544,13 +1035,487 @@ body {
 }
 
 .toast-drawer h4 {
-    color: #c59b27;
-    font-size: 0.95rem;
     margin-bottom: 3px;
+    color: var(--gold);
+    font-size: 0.95rem;
 }
 
 .toast-drawer p {
-    font-size: 0.85rem;
     color: #d1d5db;
-    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* ---------- 9. FOOTER ---------- */
+.site-footer {
+    margin-top: 60px;
+    padding: 32px 20px;
+    text-align: center;
+    color: #d9e1da;
+    font-size: 0.88rem;
+    background-color: var(--green);
+}
+
+.site-footer a {
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.site-footer a:hover {
+    color: var(--white);
+}
+
+/* ---------- NEW: BOOKING BAR, FACTS STRIP, PAGE BANNERS, SPLIT SECTION ---------- */
+/* Quick booking bar on the home page */
+.booking-bar {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 0.8fr auto;
+    gap: 12px;
+    align-items: end;
+    max-width: 920px;
+    margin: 36px auto 0;
+    padding: 16px;
+    text-align: left;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.booking-field label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.booking-field select,
+.booking-field input {
+    width: 100%;
+    padding: 11px 12px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    background-color: var(--white);
+    border: 1px solid #b8b09c;
+    border-radius: var(--radius-small);
+}
+
+.booking-field select:hover,
+.booking-field input:hover {
+    border-color: var(--ink);
+}
+
+.booking-field select:focus,
+.booking-field input:focus {
+    border-color: var(--gold-dark);
+    box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.3);
+    outline: none;
+}
+
+.booking-bar .form-btn {
+    width: auto;
+    padding: 12px 22px;
+    white-space: nowrap;
+}
+
+/* Photo banner at the top of every inner page */
+.page-banner {
+    min-height: 300px;
+    padding: 70px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(16, 32, 22, 0.6), rgba(16, 32, 22, 0.6)), url('IMAGES/gokole-park-guesthouse-garden.jpeg');
+}
+
+/* Change the photo for each page here */
+.page-banner--about {
+    background-image: linear-gradient(rgba(16, 32, 22, 0.6), rgba(16, 32, 22, 0.6)), url('IMAGES/chiefs-kraal-tour-gokole-village.jpeg');
+}
+
+.page-banner--services {
+    background-image: linear-gradient(rgba(16, 32, 22, 0.6), rgba(16, 32, 22, 0.6)), url('IMAGES/braai-area-gokole-park.jpeg');
+}
+
+.page-banner--enquiry {
+    background-image: linear-gradient(rgba(16, 32, 22, 0.6), rgba(16, 32, 22, 0.6)), url('IMAGES/executive-lounge-suite-gokole-park.jpeg');
+}
+
+.page-banner--policies {
+    background-image: linear-gradient(rgba(16, 32, 22, 0.6), rgba(16, 32, 22, 0.6)), url('IMAGES/gokole-park-guesthouse-garden.jpeg');
+}
+
+.page-banner--contact {
+    background-image: linear-gradient(rgba(16, 32, 22, 0.6), rgba(16, 32, 22, 0.6)), url('IMAGES/gokole-park-guesthouse-garden.jpeg');
+}
+
+.page-banner-content {
+    max-width: 760px;
+}
+
+.page-banner h1 {
+    margin: 10px 0;
+    font-family: var(--font-display);
+    font-size: var(--fs-h1);
+    color: var(--white);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.page-banner p {
+    color: #f1efe6;
+    font-size: 1.05rem;
+}
+
+.page-banner .sub-title {
+    color: var(--gold);
+}
+
+/* Photo next to text */
+.feature-split {
+    max-width: var(--page-width);
+    margin: 70px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.feature-split img {
+    width: 100%;
+    height: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+
+.feature-split h2 {
+    margin: 10px 0 14px;
+    font-family: var(--font-display);
+    font-size: var(--fs-h2-large);
+}
+
+.feature-split p {
+    margin-bottom: 22px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.section-action {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Recommended cards */
+.room-card.is-recommended {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px var(--gold), var(--shadow);
+}
+
+.recommended-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px;
+    background-color: var(--gold);
+    color: var(--ink);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* The card eases up and the tag pops in once the card scrolls into view */
+.room-card.is-recommended.active {
+    animation: card-rise 0.9s ease-out;
+}
+
+.room-card.is-recommended.active .recommended-tag {
+    animation: tag-pop 0.6s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes card-rise {
+    0%   { transform: translateY(40px) scale(0.97); }
+    65%  { transform: translateY(-5px) scale(1.01); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes tag-pop {
+    0%   { opacity: 0; transform: scale(0.4) rotate(-10deg); }
+    70%  { opacity: 1; transform: scale(1.12) rotate(3deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+/* Policies page */
+.policy-wrap {
+    max-width: 860px;
+}
+
+.policy-wrap .panel {
+    margin-bottom: 24px;
+}
+
+.policy-jump {
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 2;
+}
+
+.policy-jump a {
+    font-weight: 700;
+}
+
+.policy h3 {
+    margin: 22px 0 6px;
+    font-size: 1.05rem;
+}
+
+.policy h3:first-of-type {
+    margin-top: 10px;
+}
+
+.policy .updated {
+    margin-bottom: 14px;
+    font-size: 0.85rem;
+}
+
+.policy-list {
+    margin: 6px 0 12px 20px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.form-note {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* Respect visitors who turn animations off */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---------- 10. MEDIA QUERIES ---------- */
+
+/* TABLET: 768px and below (hamburger menu appears) */
+@media (max-width: 768px) {
+    :root {
+        --fs-h1: 2.6rem;
+        --fs-h2: 1.7rem;
+        --fs-h2-large: 2rem;
+        --nav-height: 64px;
+    }
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    /* Menu drops down under the navbar */
+    .site-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 20px 20px;
+        background-color: var(--white);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .site-nav.open {
+        display: flex;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .nav-book-btn {
+        margin-top: 14px;
+        padding: 14px;
+        text-align: center;
+    }
+
+    .hero-section {
+        min-height: 70vh;
+    }
+
+    .about-intro-container {
+        margin: 40px auto;
+    }
+
+    .experience-gokole-section {
+        padding: 60px 20px;
+        margin: 50px 0;
+    }
+
+    .experience-card {
+        padding: 35px 25px;
+    }
+
+    .experience-card h2 {
+        font-size: 2rem;
+    }
+
+    .card-grid,
+    .testimonial-grid {
+        gap: 20px;
+    }
+
+    .launch-card {
+        padding: 45px 22px;
+    }
+}
+
+/* MOBILE: 480px and below */
+@media (max-width: 480px) {
+    :root {
+        --fs-h1: 2rem;
+        --fs-h2: 1.45rem;
+        --fs-h2-large: 1.7rem;
+        --fs-h3: 1.05rem;
+        --fs-body: 0.95rem;
+    }
+
+    .logo {
+        flex-direction: column;
+        gap: 0;
+        font-size: 1.05rem;
+        line-height: 1.2;
+    }
+
+    .hero-section {
+        padding: 40px 16px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-btn,
+    .launch-btn {
+        display: block;
+        width: 100%;
+        padding: 14px 16px;
+    }
+
+    .about-intro-content p {
+        font-size: 1rem;
+    }
+
+    .showcase-container,
+    .testimonials-container {
+        margin: 35px auto;
+        padding: 0 16px;
+    }
+
+    .card-image-wrapper {
+        height: 190px;
+    }
+
+    .experience-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .panel {
+        padding: 24px 18px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .map-frame {
+        height: 300px;
+    }
+
+    .toast-drawer {
+        left: 15px;
+        bottom: 15px;
+        padding: 16px 18px;
+    }
+
+    .toast-drawer.show {
+        right: 15px;
+    }
+
+    .lightbox-content {
+        max-width: 94%;
+    }
+}
+
+/* ---------- NEW COMPONENTS: TABLET AND MOBILE ---------- */
+@media (max-width: 768px) {
+    .booking-bar {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .booking-field:first-child,
+    .booking-bar .form-btn {
+        grid-column: 1 / -1;
+    }
+
+    .booking-bar .form-btn {
+        width: 100%;
+    }
+
+    .page-banner {
+        min-height: 240px;
+        padding: 55px 20px;
+    }
+
+    .feature-split {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin: 45px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-bar {
+        grid-template-columns: 1fr;
+        padding: 14px;
+    }
+
+    .page-banner {
+        min-height: 210px;
+        padding: 45px 16px;
+    }
+
+    .page-banner p {
+        font-size: 1rem;
+    }
 }
